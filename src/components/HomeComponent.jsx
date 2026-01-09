@@ -18,10 +18,8 @@ function HomeComponent({ products, addToCart }) {
 
   const latestProducts = products.slice(0, 8);
 
-  // 🚀 保留名稱順序，用來篩選 TOP 5
   const topNames = ["暖霞落日", "咖啡午後", "莫內花園", "粉霧芭蕾", "柔光假日"];
 
-  // 🚀 修改：直接從 products 抓取完整資料，包含後端的 tags 與 effect
   const bestSellers = React.useMemo(() => {
     return topNames
       .map((name) => products.find((p) => p.name === name))

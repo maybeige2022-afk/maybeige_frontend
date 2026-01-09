@@ -27,7 +27,7 @@ const ResetPasswordComponent = () => {
 
     try {
       await axios.post(
-        `http://localhost:8080/api/user/reset-password/${token}`,
+        `https://maybeige-api.onrender.com/api/user/reset-password/${token}`,
         {
           password: password,
         }

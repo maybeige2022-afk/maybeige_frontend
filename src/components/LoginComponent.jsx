@@ -18,7 +18,7 @@ function LoginComponent({ onLogin, setToast }) {
   };
 
   const handleGoogleAction = () => {
-    window.location.href = "http://localhost:8080/api/user/google";
+    window.location.href = "https://maybeige-api.onrender.com/api/user/google";
   };
 
   const handleForgotPassword = async () => {
@@ -28,7 +28,7 @@ function LoginComponent({ onLogin, setToast }) {
     try {
       setToast({ show: true, message: "正在發送重設郵件..." });
       const response = await axios.post(
-        "http://localhost:8080/api/user/forgot-password",
+        "https://maybeige-api.onrender.com/api/user/forgot-password",
         {
           email: targetEmail.toLowerCase().trim(),
         }
@@ -59,7 +59,7 @@ function LoginComponent({ onLogin, setToast }) {
       }
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/user/login",
+          "https://maybeige-api.onrender.com/api/user/login",
           {
             email: userKey,
             password: password,
@@ -89,12 +89,15 @@ function LoginComponent({ onLogin, setToast }) {
         setToast({ show: true, message: "密碼需包含至少一個英文與數字" });
       } else {
         try {
-          await axios.post("http://localhost:8080/api/user/register", {
-            username: name,
-            email: userKey,
-            password: password,
-            phone: "",
-          });
+          await axios.post(
+            "https://maybeige-api.onrender.com/api/user/register",
+            {
+              username: name,
+              email: userKey,
+              password: password,
+              phone: "",
+            }
+          );
           setToast({ show: true, message: "歡迎加入！註冊成功，請登入" });
           setIsLogin(true);
         } catch (err) {

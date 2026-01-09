@@ -19,10 +19,10 @@ function MyAccountComponent({ onLogout, setToast }) {
           : `Bearer ${token}`;
 
         const [userRes, orderRes] = await Promise.all([
-          axios.get("http://localhost:8080/api/user/profile", {
+          axios.get("https://maybeige-api.onrender.com/api/user/profile", {
             headers: { Authorization: formattedToken },
           }),
-          axios.get("http://localhost:8080/api/orders/my-orders", {
+          axios.get("https://maybeige-api.onrender.com/api/orders/my-orders", {
             headers: { Authorization: formattedToken },
           }),
         ]);
@@ -49,7 +49,7 @@ function MyAccountComponent({ onLogout, setToast }) {
       const token = localStorage.getItem("token");
       const formattedToken = token?.replace("JWT ", "Bearer ");
       const response = await axios.patch(
-        "http://localhost:8080/api/user/update-info",
+        "https://maybeige-api.onrender.com/api/user/update-info",
         { username: userInfo.name, phone: userInfo.phone },
         { headers: { Authorization: formattedToken } }
       );

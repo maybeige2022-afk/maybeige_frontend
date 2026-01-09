@@ -56,7 +56,7 @@ function CheckoutComponent({ cartItems = [], setToast, clearCart }) {
       }
 
       const response = await axios.post(
-        "http://localhost:8080/api/user/validate-coupon",
+        "https://maybeige-api.onrender.com/api/user/validate-coupon",
         { couponCode: couponCode.trim() },
         { headers: { Authorization: finalToken } }
       );
@@ -140,7 +140,7 @@ function CheckoutComponent({ cartItems = [], setToast, clearCart }) {
       };
 
       const response = await axios.post(
-        "http://localhost:8080/api/orders",
+        "https://maybeige-api.onrender.com/api/orders",
         orderData,
         { headers: { Authorization: finalToken } }
       );

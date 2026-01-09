@@ -37,7 +37,9 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/product");
+        const response = await axios.get(
+          "https://maybeige-api.onrender.com/api/product"
+        );
         setAllProducts(response.data);
       } catch (err) {
         console.error("初始化產品失敗:", err);
