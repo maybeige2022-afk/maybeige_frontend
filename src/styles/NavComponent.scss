@@ -1,0 +1,235 @@
+$brown: #6b4028;
+$gray: #626060;
+$gray-light: #d9d9d9;
+$cream: #fffdf0;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: $cream;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(107, 64, 40, 0.1);
+
+  .logo {
+    text-decoration: none;
+    color: $brown;
+    font-weight: bold;
+    font-size: 26px;
+    font-style: italic;
+    letter-spacing: 2px;
+  }
+
+  .nav-right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      font-size: 13px;
+      color: $gray;
+      letter-spacing: 1px;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $brown;
+        }
+        &.active {
+          color: $brown;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .search-bar {
+      display: flex;
+      border-bottom: 1px solid $gray;
+      padding-bottom: 2px;
+      width: 180px;
+
+      input {
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 13px;
+        color: $gray;
+        flex: 1;
+        &::placeholder {
+          color: $gray-light;
+        }
+      }
+
+      .search-icon {
+        font-size: 13px;
+        color: $gray;
+        cursor: pointer;
+        transition: transform 0.2s;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .mobile-icons,
+  .side-drawer,
+  .overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .main-nav {
+    .logo {
+      font-size: 22px;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    .mobile-icons {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      .icon-link {
+        color: $brown;
+        font-size: 15px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .mobile-menu-icon {
+        font-size: 15px;
+        color: $brown;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .side-drawer {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background-color: #fff;
+      z-index: 2000;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 25px 20px;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+
+      &.open {
+        right: 0;
+      }
+
+      .drawer-header {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 25px;
+        .close-btn {
+          font-size: 24px;
+          cursor: pointer;
+          color: $gray;
+        }
+      }
+
+      .drawer-search {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $gray-light;
+        padding: 8px 0;
+        margin-bottom: 30px;
+        input {
+          border: none;
+          outline: none;
+          width: 100%;
+          font-size: 15px;
+          background: transparent;
+        }
+        .search-icon {
+          color: $gray;
+          font-size: 14px;
+          cursor: pointer;
+          transition: transform 0.2s;
+          &:active {
+            transform: scale(0.9);
+          }
+        }
+      }
+
+      .drawer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        a {
+          text-decoration: none;
+          color: $gray;
+          font-size: 17px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #f9f9f9;
+          &.active {
+            color: $brown;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .overlay {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1500;
+      backdrop-filter: blur(2px);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .main-nav {
+    padding: 10px 20px;
+    .logo {
+      font-size: 19px;
+    }
+    .mobile-icons {
+      gap: 20px;
+    }
+  }
+  .side-drawer {
+    width: 250px;
+  }
+  .banner,
+  .home-page,
+  .main-content {
+    padding-top: 60px;
+  }
+}

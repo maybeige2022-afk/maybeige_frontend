@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: #6b4028;
+  font-family: "Times New Roman", "Noto Sans TC", serif;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cart-toast {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #626060;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 2px;
+  z-index: 10000;
+  font-size: 14px;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  animation: toastFade 3s ease-in-out forwards;
+}
+
+@keyframes toastFade {
+  0% {
+    opacity: 0;
+    top: 70px;
+  }
+  10% {
+    opacity: 1;
+    top: 90px;
+  }
+  90% {
+    opacity: 1;
+    top: 90px;
+  }
+  100% {
+    opacity: 0;
+    top: 70px;
+  }
+}

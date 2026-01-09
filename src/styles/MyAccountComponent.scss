@@ -1,0 +1,408 @@
+$brown: #6b4028;
+$gray: #626060;
+$gray-light: #d9d9d9;
+$cream: #fffdf0;
+
+.my-account-page {
+  padding: 120px 20px 80px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  button,
+  input,
+  table,
+  span {
+    font-family: inherit;
+  }
+
+  .account-container {
+    width: 100%;
+    max-width: 900px;
+
+    .page-header {
+      background-color: $brown;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 20px;
+      letter-spacing: 8px;
+      margin: 20px 0 40px;
+    }
+
+    section {
+      border: 1px solid $gray-light;
+      margin-bottom: 40px;
+
+      .section-title {
+        background-color: $cream;
+        border-bottom: 1px solid $gray-light;
+        text-align: center;
+        padding: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        color: $brown;
+        letter-spacing: 3px;
+      }
+    }
+
+    .info-content {
+      padding: 40px 20px;
+      .info-row {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        margin-bottom: 10px;
+        label {
+          width: 100px;
+          color: $gray;
+          letter-spacing: 2px;
+        }
+        .email-text {
+          font-weight: bold;
+          font-family: serif;
+          color: $gray;
+        }
+        .input-with-btn {
+          display: flex;
+          gap: 15px;
+          input {
+            border: 1px solid $gray-light;
+            padding: 5px 10px;
+            width: 180px;
+            color: $gray;
+          }
+        }
+        button {
+          background-color: $brown;
+          color: white;
+          border: none;
+          padding: 5px 15px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: opacity 0.3s;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+
+    .order-table-container {
+      padding: 40px 20px;
+      max-height: 300px;
+      overflow-y: auto;
+
+      .order-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        th {
+          border-bottom: 1px solid $gray-light;
+          padding-bottom: 5px;
+          color: $gray;
+          font-weight: normal;
+          font-size: 14px;
+        }
+        td {
+          padding: 20px 0;
+          color: $gray;
+          font-size: 14px;
+        }
+        .view-btn {
+          background-color: $brown;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: opacity 0.3s;
+          letter-spacing: 4px;
+          text-indent: 4px;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+        .no-data {
+          text-align: center;
+          padding-top: 60px;
+          letter-spacing: 2px;
+          color: $gray;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .logout-footer-btn {
+      display: block;
+      width: 100%;
+      background-color: $cream;
+      border: none;
+      color: $brown;
+      margin-top: 60px;
+      padding: 15px;
+      letter-spacing: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(107, 64, 40, 0.15);
+      &:hover {
+        background-color: $brown;
+        color: $cream;
+      }
+    }
+  }
+
+  .order-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+  }
+
+  .order-modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 4px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    h3 {
+      text-align: center;
+      color: $brown;
+      letter-spacing: 5px;
+      margin: 0;
+    }
+    .order-id-sub {
+      text-align: center;
+      font-size: 12px;
+      color: $gray;
+      margin-top: 5px;
+      margin-bottom: 25px;
+    }
+    .close-x {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: $gray;
+      cursor: pointer;
+    }
+
+    .modal-body {
+      .detail-group {
+        margin-bottom: 20px;
+        p {
+          font-size: 14px;
+          margin: 8px 0;
+          color: $gray;
+        }
+      }
+      .modal-divider {
+        border-top: 1px solid $gray-light;
+        margin: 15px 0;
+      }
+      .items-list {
+        max-height: 200px;
+        overflow-y: auto;
+        .item-detail {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .item-name {
+            font-weight: bold;
+            font-size: 14px;
+            color: $gray;
+          }
+          .item-spec {
+            font-size: 12px;
+            color: #999;
+          }
+          .item-price-qty {
+            font-size: 13px;
+            color: $gray;
+            display: flex;
+            align-items: center;
+            span:first-child {
+              display: inline-block;
+              width: 40px;
+              text-align: left;
+              margin-right: 15px;
+            }
+            span:last-child {
+              display: inline-block;
+              width: 80px;
+              text-align: right;
+            }
+          }
+        }
+      }
+      .price-summary {
+        p {
+          display: flex;
+          justify-content: space-between;
+          font-size: 14px;
+          color: $gray;
+          margin: 5px 0;
+          letter-spacing: 1px;
+        }
+        .final-total {
+          margin-top: 20px;
+          justify-content: center;
+          font-size: 16px;
+          font-weight: bold;
+          color: $brown;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .my-account-page {
+    padding-top: 100px;
+    padding-bottom: 60px;
+    min-height: 900px;
+
+    .account-container {
+      .page-header {
+        margin-top: 0;
+        margin-bottom: 30px;
+        font-size: 18px;
+        letter-spacing: 6px;
+      }
+
+      section {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .my-account-page {
+    min-height: 700px;
+  }
+}
+
+@media (max-width: 576px) {
+  .my-account-page {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    min-height: 585px;
+
+    .account-container {
+      .page-header {
+        margin: 0 0 25px;
+        font-size: 16px;
+        letter-spacing: 5px;
+        padding: 8px;
+      }
+
+      .info-content {
+        padding: 20px 10px;
+
+        .info-row {
+          align-items: center;
+          justify-content: flex-start;
+          gap: 5px;
+          margin-bottom: 15px;
+
+          label {
+            font-size: 12px;
+            width: 70px;
+
+            margin-bottom: 0;
+            color: $gray;
+            white-space: nowrap;
+          }
+
+          .email-text {
+            font-size: 13px;
+            white-space: nowrap;
+          }
+
+          .input-with-btn {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+
+            input {
+              font-size: 12px;
+              width: 110px !important;
+              min-width: 80px;
+              flex: none !important;
+              padding: 4px 8px;
+              border: 1px solid $gray-light;
+            }
+
+            button {
+              width: fit-content !important;
+              padding: 4px 8px;
+              font-size: 11px;
+              white-space: nowrap;
+              flex-shrink: 0;
+            }
+          }
+        }
+      }
+
+      .order-table-container {
+        padding: 20px 5px;
+        display: block;
+        max-height: 250px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        .order-table {
+          width: 100%;
+
+          th {
+            font-size: 11px;
+            padding: 8px 2px;
+            letter-spacing: 1px;
+          }
+          td {
+            font-size: 11px;
+            padding: 10px 0;
+            letter-spacing: 1px;
+          }
+          .view-btn {
+            padding: 4px 8px;
+            font-size: 11px;
+            width: fit-content;
+          }
+        }
+      }
+
+      .logout-footer-btn {
+        margin-top: 40px;
+        padding: 12px;
+        font-size: 14px;
+        letter-spacing: 4px;
+      }
+    }
+    .order-modal-content {
+      width: 80%;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+  }
+}
