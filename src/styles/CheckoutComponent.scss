@@ -573,7 +573,7 @@ $cream: #fffdf0;
         }
       }
       .final-step {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         align-items: center;
         text-align: center;
