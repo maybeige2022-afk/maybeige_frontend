@@ -564,7 +564,7 @@ $cream: #fffdf0;
           }
 
           .cream-btn {
-            font-size: 10px;
+            font-size: 12px;
             padding: 5px 15px;
             white-space: nowrap;
             margin: 5px auto 0;
@@ -576,10 +576,15 @@ $cream: #fffdf0;
 
     .final-step .privacy-policy {
       font-size: 10px !important;
-      white-space: nowrap;
+      white-space: nowrap; // 確保這行字不換行
       letter-spacing: 0px;
       color: $gray;
-      margin: 0;
+
+      /* 置中關鍵設定 */
+      display: block; // 1. 轉成塊級元素，margin 才會生效
+      text-align: center; // 2. 讓文字在行內置中
+      margin: 10px auto; // 3. 上下給 10px 間距，左右自動置中
+      width: 100%; // 4. 確保佔滿寬度，文字才能在正中間
     }
   }
 }
