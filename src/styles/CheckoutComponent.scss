@@ -529,7 +529,7 @@ $cream: #fffdf0;
 
 @media (max-width: 400px) {
   .checkout-page {
-    padding: 40px 0 30px;
+    padding: 50px 0 30px;
 
     .checkout-container {
       .discount-section .coupon-row .coupon-input-group {
@@ -545,39 +545,46 @@ $cream: #fffdf0;
 
       .checkout-section {
         .shipping-box {
-          display: flex;
-          flex-direction: column !important;
-          align-items: flex-start;
-          padding: 15px 5px;
-          position: relative;
+          display: flex !important;
+          flex-wrap: wrap !important; // 允許折行
+          flex-direction: row !important; // 恢復橫向，但讓子元素佔滿 100% 來模擬垂直
+          padding: 15px 10px !important;
+          justify-content: space-between !important;
+          align-items: center !important;
 
-          p {
-            width: 100%;
-            text-align: left;
-            font-size: 13px;
-            margin-bottom: 8px;
-            line-height: 1.4;
+          p,
+          .free-shipping-hint {
+            width: 100% !important;
+            text-align: left !important;
+            margin-bottom: 5px !important;
+            font-size: 13px !important;
+            display: block !important;
           }
 
-          .free-shipping-hint {
-            font-size: 11px;
-            margin-top: 5px;
-            width: 70%;
+          // 特別處理最後一行：要跟按鈕並排
+          // 如果按鈕在 HTML 裡是在最後面，我們讓最後一行的文字寬度縮小
+          .free-shipping-hint,
+          p:nth-last-of-type(1) {
+            width: 60% !important; // 寬度縮小，騰出空間給按鈕
+            display: inline-block !important;
+            margin-bottom: 0 !important;
           }
 
           .cream-btn {
-            position: absolute;
-            right: 5px;
-            bottom: 15px;
-            font-size: 11px;
-            padding: 6px 10px;
+            width: auto !important;
+            font-size: 11px !important;
+            padding: 6px 10px !important;
+            margin-top: 0 !important;
+            white-space: nowrap !important;
+            display: inline-block !important;
+            flex-shrink: 0 !important;
           }
         }
       }
 
       .final-step .privacy-policy {
         font-size: 10px !important;
-        letter-spacing: 0px;
+        letter-spacing: 0.5px;
         color: $gray;
       }
     }
