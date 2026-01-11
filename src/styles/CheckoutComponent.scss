@@ -531,63 +531,45 @@ $cream: #fffdf0;
   .checkout-page {
     padding: 50px 0 30px;
 
-    .checkout-container {
-      .discount-section .coupon-row .coupon-input-group {
-        input {
-          width: 160px;
-          font-size: 12px;
+    .checkout-section {
+      .shipping-box {
+        padding: 15px 5px; // 稍微縮減內邊距
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        p {
+          width: 100%;
+          font-size: 11px; // 原本 12px -> 11px
+          color: $gray;
+          letter-spacing: 0.5px;
+          text-align: center;
+          margin-bottom: 6px; // 縮小行距
+          white-space: normal; // 允許長字折行，避免噴出螢幕
         }
+
+        .free-shipping-hint {
+          font-size: 9px; // 原本 10px -> 9px
+          text-align: left;
+          margin-left: 2px;
+          flex: 1;
+        }
+
         .cream-btn {
-          font-size: 11px;
-          padding: 8px 10px;
+          font-size: 9px; // 原本 10px -> 9px
+          padding: 5px 15px; // 縮小按鈕體積
+          white-space: nowrap;
+          margin: 5px auto 0;
+          flex-shrink: 0;
         }
       }
+    }
 
-      .checkout-section {
-        .shipping-box {
-          display: flex !important;
-          flex-wrap: wrap !important;
-          padding: 15px 10px !important;
-          justify-content: space-between !important;
-          align-items: center !important;
-
-          // 1. 強制讓「第一行」(7-11店到店) 佔滿 100% 換行
-          p:first-of-type {
-            width: 100% !important;
-            display: block !important;
-            margin-bottom: 8px !important;
-          }
-
-          // 2. 讓「第二行」(運費 NT$XX) 或「第三行」(再買多少) 縮小寬度
-          // 這樣按鈕才能排在它們旁邊
-          p:nth-of-type(2),
-          .free-shipping-hint {
-            width: 55% !important; // 給按鈕留出足夠空間
-            display: inline-block !important;
-            margin-bottom: 0 !important;
-            font-size: 13px !important;
-            vertical-align: middle;
-          }
-
-          // 3. 按鈕設定
-          .cream-btn {
-            width: auto !important;
-            font-size: 11px !important;
-            padding: 6px 12px !important;
-            margin: 0 !important;
-            white-space: nowrap !important;
-            display: inline-block !important;
-            flex-shrink: 0 !important;
-            vertical-align: middle;
-          }
-        }
-      }
-
-      .final-step .privacy-policy {
-        font-size: 10px !important;
-        letter-spacing: 0px;
-        color: $gray;
-      }
+    .final-step .privacy-policy {
+      font-size: 9px !important;
+      letter-spacing: 0px;
+      color: $gray;
     }
   }
 }
