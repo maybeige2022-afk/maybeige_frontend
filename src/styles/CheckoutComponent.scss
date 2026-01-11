@@ -576,29 +576,19 @@ $cream: #fffdf0;
 
     .final-step {
       width: 100%;
-      text-align: center; // 讓區塊內的文字與行內元素置中
+      text-align: center;
       display: flex;
       flex-direction: column;
-      align-items: center; // 確保 flex 子元素置中
-      padding: 20px 0; // 給點上下空間，取代 margin
+      align-items: center;
+      padding: 20px 0;
 
       .privacy-policy {
         font-size: 10px;
         color: $gray;
         letter-spacing: 0;
-
-        display: block; // 轉為塊級
-        width: 100%; // 佔滿寬度
-        margin: 10px 0; // 用簡單的上下間距
-        white-space: normal; // 避免文字噴出螢幕導致看起來沒置中
-      }
-
-      // 如果妳有同意條款的 label，也順便讓它置中
-      .agree-terms {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: block;
         width: 100%;
+        white-space: nowrap;
       }
     }
   }
