@@ -161,6 +161,8 @@ $cream: #fffdf0;
 
   .go-shopping-btn {
     box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
     display: block;
     text-decoration: none;
     width: 350px;
