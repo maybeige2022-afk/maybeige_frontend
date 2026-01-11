@@ -431,7 +431,26 @@ $cream: #fffdf0;
         font-size: 70px;
       }
       .empty-title {
+        margin-left: 5px;
+        width: 100%;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .cart-page {
+    min-height: 495px;
+    .empty-cart-container {
+      .empty-title {
+        letter-spacing: 4px;
+      }
+
+      .go-shopping-btn {
+        width: 280px;
         font-size: 18px;
+        padding: 10px;
       }
     }
   }

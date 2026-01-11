@@ -284,7 +284,7 @@ $cream: #fffdf0;
     .popup-options {
       margin: 20px 0;
       .option-row {
-        margin-bottom: 15px; // 🚀 選項與選項之間也撐開一點
+        margin-bottom: 15px;
         select {
           width: 180px;
         }
@@ -347,5 +347,15 @@ $cream: #fffdf0;
         font-size: 20px;
       }
     }
+  }
+}
+
+@media (max-width: 400px) {
+  .popup-content {
+    width: 300px;
+  }
+
+  .add-to-cart-final {
+    width: 90%;
   }
 }

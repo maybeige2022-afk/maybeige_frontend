@@ -224,12 +224,9 @@ body {
       gap: 20px;
     }
   }
+
   .side-drawer {
-    width: 250px;
-  }
-  .banner,
-  .home-page,
-  .main-content {
-    padding-top: 60px;
+    width: 240px !important;
+    padding: 20px 15px;
   }
 }
