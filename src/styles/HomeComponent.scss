@@ -10,7 +10,7 @@ $red: #932619;
   // Banner
   .banner-section {
     display: flex;
-    margin-top: 40px;
+    margin-top: 60px;
     align-items: stretch;
 
     .swiper-container {
@@ -424,9 +424,6 @@ $red: #932619;
 
 @media (max-width: 992px) {
   .homepage-content {
-    .banner-section {
-      margin-top: 20px;
-    }
     .product-section {
       .product-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -550,6 +547,9 @@ $red: #932619;
 
 @media (max-width: 576px) {
   .homepage-content {
+    .banner-section {
+      margin-top: 50px;
+    }
     .product-section,
     .best-seller-section {
       padding: 0 15px;
