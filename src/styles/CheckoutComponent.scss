@@ -534,7 +534,7 @@ $cream: #fffdf0;
     .checkout-container {
       .discount-section .coupon-row .coupon-input-group {
         input {
-          width: 180px;
+          width: 200px;
           font-size: 12px;
         }
         .cream-btn {
@@ -549,7 +549,7 @@ $cream: #fffdf0;
 
           p {
             width: 100%;
-            font-size: 11px;
+            font-size: 12px;
             color: $gray;
             letter-spacing: 0.5px;
             text-align: center;
@@ -557,7 +557,7 @@ $cream: #fffdf0;
           }
 
           .free-shipping-hint {
-            font-size: 9px;
+            font-size: 10px;
             text-align: left;
             margin-left: 2px;
             flex: 1;
@@ -575,7 +575,8 @@ $cream: #fffdf0;
     }
 
     .final-step .privacy-policy {
-      font-size: 9px !important;
+      font-size: 10px !important;
+      white-space: nowrap;
       letter-spacing: 0px;
       color: $gray;
       margin: 0;
