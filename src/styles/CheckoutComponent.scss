@@ -534,7 +534,7 @@ $cream: #fffdf0;
     .checkout-container {
       .discount-section .coupon-row .coupon-input-group {
         input {
-          width: 200px;
+          width: 190px;
           font-size: 12px;
         }
         .cream-btn {
@@ -557,7 +557,7 @@ $cream: #fffdf0;
           }
 
           .free-shipping-hint {
-            font-size: 10px;
+            font-size: 12px;
             text-align: left;
             margin-left: 2px;
             flex: 1;
@@ -574,17 +574,32 @@ $cream: #fffdf0;
       }
     }
 
-    .final-step .privacy-policy {
-      font-size: 10px !important;
-      white-space: nowrap; // 確保這行字不換行
-      letter-spacing: 0px;
-      color: $gray;
+    .final-step {
+      width: 100%;
+      text-align: center; // 讓區塊內的文字與行內元素置中
+      display: flex;
+      flex-direction: column;
+      align-items: center; // 確保 flex 子元素置中
+      padding: 20px 0; // 給點上下空間，取代 margin
 
-      /* 置中關鍵設定 */
-      display: block; // 1. 轉成塊級元素，margin 才會生效
-      text-align: center; // 2. 讓文字在行內置中
-      margin: 10px auto; // 3. 上下給 10px 間距，左右自動置中
-      width: 100%; // 4. 確保佔滿寬度，文字才能在正中間
+      .privacy-policy {
+        font-size: 10px;
+        color: $gray;
+        letter-spacing: 0;
+
+        display: block; // 轉為塊級
+        width: 100%; // 佔滿寬度
+        margin: 10px 0; // 用簡單的上下間距
+        white-space: normal; // 避免文字噴出螢幕導致看起來沒置中
+      }
+
+      // 如果妳有同意條款的 label，也順便讓它置中
+      .agree-terms {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
     }
   }
 }
