@@ -549,7 +549,7 @@ $cream: #fffdf0;
 
           p {
             width: 100%;
-            font-size: 8px !important;
+            font-size: 9px;
             color: $gray;
             letter-spacing: 0.5px;
             text-align: center;
@@ -557,7 +557,7 @@ $cream: #fffdf0;
           }
 
           .free-shipping-hint {
-            font-size: 8px;
+            font-size: 9px;
             text-align: left;
             margin-left: 2px;
             flex: 1;
@@ -578,6 +578,7 @@ $cream: #fffdf0;
       font-size: 9px !important;
       letter-spacing: 0px;
       color: $gray;
+      margin: 10px 0;
     }
   }
 }
