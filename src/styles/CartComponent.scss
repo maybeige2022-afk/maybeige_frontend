@@ -230,6 +230,7 @@ $cream: #fffdf0;
         margin-bottom: 40px;
       }
       .go-shopping-btn {
+        font-weight: bold;
         width: 330px;
         font-size: 18px;
         padding: 12px;
@@ -416,13 +417,11 @@ $cream: #fffdf0;
         align-items: center;
         gap: 10px;
         margin-bottom: 20px;
-        .go-shopping-btn,
-        .checkout-btn {
+
+        .go-shopping-btn {
           width: 260px;
-          height: 45px;
           font-size: 14px;
           letter-spacing: 2px;
-          box-sizing: border-box;
         }
       }
     }
