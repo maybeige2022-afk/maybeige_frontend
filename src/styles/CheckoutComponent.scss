@@ -573,23 +573,5 @@ $cream: #fffdf0;
         }
       }
     }
-
-    .final-step {
-      width: 100%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 0;
-
-      .privacy-policy {
-        font-size: 10px;
-        color: $gray;
-        letter-spacing: 0;
-        display: block;
-        width: 100%;
-        white-space: nowrap;
-      }
-    }
   }
 }
