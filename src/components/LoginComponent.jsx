@@ -18,7 +18,11 @@ function LoginComponent({ onLogin, setToast }) {
   };
 
   const handleGoogleAction = () => {
-    window.location.href = "https://maybeige-api.onrender.com/api/user/google";
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    const googleAuthUrl = `${API_BASE_URL}/api/user/google?prompt=select_account`;
+    window.location.href = googleAuthUrl;
   };
 
   const handleForgotPassword = async () => {
