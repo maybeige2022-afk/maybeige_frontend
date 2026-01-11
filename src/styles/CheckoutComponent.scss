@@ -533,32 +533,27 @@ $cream: #fffdf0;
 
     .checkout-section {
       .shipping-box {
-        padding: 15px 5px; // 稍微縮減內邊距
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
+        padding: 15px 5px;
 
         p {
           width: 100%;
-          font-size: 11px; // 原本 12px -> 11px
+          font-size: 10px;
           color: $gray;
           letter-spacing: 0.5px;
           text-align: center;
-          margin-bottom: 6px; // 縮小行距
-          white-space: normal; // 允許長字折行，避免噴出螢幕
+          margin-bottom: 6px;
         }
 
         .free-shipping-hint {
-          font-size: 9px; // 原本 10px -> 9px
+          font-size: 8px;
           text-align: left;
           margin-left: 2px;
           flex: 1;
         }
 
         .cream-btn {
-          font-size: 9px; // 原本 10px -> 9px
-          padding: 5px 15px; // 縮小按鈕體積
+          font-size: 9px;
+          padding: 5px 15px;
           white-space: nowrap;
           margin: 5px auto 0;
           flex-shrink: 0;
