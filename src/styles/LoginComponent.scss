@@ -1,0 +1,201 @@
+$brown: #6b4028;
+$gray: #626060;
+$gray-light: #d9d9d9;
+$cream: #fffdf0;
+
+$container-width: 550px;
+
+.login-page {
+  background-color: white;
+  width: 100%;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .tab-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid $gray-light;
+    padding-bottom: 20px;
+    width: $container-width;
+
+    .tab-item {
+      font-size: 16px;
+      color: $gray;
+      cursor: pointer;
+      &.active {
+        font-weight: bold;
+        text-decoration: underline;
+        text-underline-offset: 8px;
+        color: black;
+      }
+    }
+    .divider-line {
+      width: 1px;
+      height: 15px;
+      background-color: $gray-light;
+    }
+  }
+
+  .form-container {
+    width: $container-width;
+    text-align: left;
+
+    .form-title,
+    .quick-login .sub-title {
+      font-size: 16px;
+      color: black;
+      margin-bottom: 25px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .or-divider {
+      display: flex;
+      align-items: center;
+      margin: 30px 0 25px 0;
+      font-weight: bold;
+      color: black;
+      letter-spacing: 2px;
+    }
+
+    .input-group {
+      margin-bottom: 30px;
+      position: relative;
+      width: 100%;
+
+      input {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid $gray-light;
+        padding: 15px 0;
+        padding-right: 0;
+        font-size: 14px;
+        color: $gray;
+        outline: none;
+        background: transparent;
+        &::placeholder {
+          color: $gray-light;
+        }
+        &:focus {
+          border-bottom: 1px solid $gray;
+        }
+      }
+
+      .toggle-eye {
+        position: absolute;
+        right: 0; // 靠最右對齊
+        bottom: 15px; // 浮在線條上方
+        cursor: pointer;
+        color: $gray-light;
+        font-size: 16px;
+        transition: color 0.2s;
+        z-index: 2; // 確保在 input 上方
+        &:hover {
+          color: $gray;
+        }
+      }
+
+      .forgot-pw-btn {
+        position: absolute;
+        right: 0;
+        bottom: 10px;
+        background-color: $gray-light;
+        border: none;
+        padding: 5px 12px;
+        font-size: 12px;
+        letter-spacing: 2px;
+        color: $gray;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: all 0.2s;
+
+        &:hover {
+          background-color: #cccccc;
+          color: #333;
+        }
+      }
+    }
+
+    .submit-btn,
+    .google-btn {
+      width: 100%;
+      background-color: $cream;
+      border: none;
+      color: $brown;
+      padding: 15px;
+      letter-spacing: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(107, 64, 40, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      &:hover {
+        background-color: $brown;
+        color: $cream;
+        box-shadow: 0 8px 20px rgba(107, 64, 40, 0.25);
+      }
+
+      &:active {
+        transform: translateY(3px);
+      }
+    }
+
+    .submit-btn {
+      margin-top: 20px;
+    }
+
+    .quick-login {
+      margin-top: 50px;
+
+      .google-btn {
+        letter-spacing: 3px;
+
+        i {
+          font-size: 16px;
+          color: $brown;
+          transition: all 0.3s ease;
+        }
+
+        &:hover {
+          i {
+            color: $cream;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .login-page {
+    min-height: 810px;
+
+    .tab-container,
+    .form-container {
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .login-page {
+    padding-top: 100px;
+    padding-bottom: 20px;
+    min-height: 585px;
+  }
+  .register-form {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+}

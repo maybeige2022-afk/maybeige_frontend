@@ -1,0 +1,253 @@
+$brown: #6b4028;
+$cream: #fffdf0;
+
+.about-page {
+  background-color: white;
+  padding-top: 150px;
+  padding-bottom: 100px;
+
+  .about-header {
+    background-color: $brown;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 3px 0;
+    text-align: center;
+
+    .header-title {
+      color: white;
+      font-size: 20px;
+      letter-spacing: 10px;
+      font-weight: normal;
+    }
+  }
+
+  .info-section {
+    padding: 0 50px;
+
+    .info-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+
+      .info-item {
+        flex: 1;
+
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
+  }
+
+  .info-section2 {
+    padding: 0 50px;
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+
+    .notice-text-container {
+      background-color: $brown;
+      color: $cream;
+      padding: 40px 60px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 1080px;
+      max-width: 90%;
+      text-align: center;
+
+      .notice-title {
+        font-size: 22px;
+        letter-spacing: 6px;
+        margin-bottom: 35px;
+        font-weight: normal;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .notice-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+
+        p {
+          font-size: 16px;
+          letter-spacing: 1.5px;
+          line-height: 1.5;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .about-page {
+    min-height: 860px;
+    padding-top: 120px;
+    padding-bottom: 80px;
+
+    .about-header {
+      width: 95%;
+      margin-bottom: 70px;
+
+      .header-title {
+        font-size: 18px;
+        letter-spacing: 8px;
+      }
+    }
+
+    .info-section {
+      padding: 0 30px;
+
+      .info-container {
+        gap: 40px;
+      }
+    }
+
+    .info-section2 {
+      padding: 0 20px;
+
+      .notice-text-container {
+        width: 100%;
+        max-width: 1300px;
+        padding: 40px 20px;
+
+        .notice-list p {
+          font-size: 15px;
+          white-space: nowrap;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .about-page {
+    min-height: 715px;
+    padding-top: 100px;
+    padding-bottom: 60px;
+
+    .about-header {
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .header-title {
+        font-size: 16px;
+        letter-spacing: 6px;
+      }
+    }
+
+    .info-section {
+      padding: 0 20px;
+
+      .info-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+
+        .info-item {
+          flex: 1;
+        }
+      }
+    }
+
+    .info-section2 {
+      padding: 0 10px;
+      margin-top: 65px;
+
+      .notice-text-container {
+        width: 100%;
+        padding: 30px 25px;
+
+        .notice-list {
+          gap: 12px;
+          p {
+            font-size: 12px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .about-page {
+    min-height: auto;
+    padding-top: 90px;
+    padding-bottom: 50px;
+
+    .about-header {
+      width: 90%;
+      margin-bottom: 40px;
+      padding: 5px 0;
+
+      .header-title {
+        font-size: 16px;
+        letter-spacing: 8px;
+      }
+    }
+
+    .info-section {
+      padding: 0 20px;
+
+      .info-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+
+        .info-item {
+          width: 100%;
+
+          img {
+            width: 100%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+          }
+        }
+      }
+    }
+
+    .info-section2 {
+      padding: 0 1px;
+      margin-top: 30px;
+
+      .notice-text-container {
+        width: 100%;
+        padding: 25px 15px;
+        border-radius: 0%;
+        .notice-title {
+          font-size: 16px;
+          letter-spacing: 3px;
+          margin-bottom: 20px;
+        }
+
+        .notice-list {
+          gap: 15px;
+          align-items: flex-start;
+
+          p {
+            font-size: 14px;
+            white-space: normal;
+            letter-spacing: 1px;
+            line-height: 1.6;
+            text-align: justify;
+          }
+        }
+      }
+    }
+  }
+}
