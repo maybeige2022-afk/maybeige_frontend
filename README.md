@@ -6,7 +6,7 @@ MAYBEIGE 是一個韓系風格的水晶手鍊電商網頁。本專案採用前�
 
 - 線上預覽: https://maybeige-frontend.onrender.com/
 
-## 📢 專案使用須知
+## 專案使用須知
 
 - **首次加載延遲**：本專案後端部署於 Render 免費方案，若長時間未有人存取，伺服器會進入休眠狀態。**首次開啟網頁約需等待 30-60 秒啟動時間**，啟動後即可恢復流暢體驗。
 - **Google 登入限制**：受限於 Google 安全規範，**請勿在嵌入式瀏覽器（如 Line、Messenger 內建瀏覽器）中使用 Google 登入**。若遇到 `403: disallowed_useragent` 錯誤，請點擊右上角並選擇「以 Chrome/Safari 開啟」即可正常登入。
