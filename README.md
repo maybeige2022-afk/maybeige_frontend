@@ -61,4 +61,4 @@ MAYBEIGE 是一個韓系風格的水晶手鍊電商網頁。本專案採用前�
 
 ---
 
-© 2026 Maybeige. Built with Passion and Precision.
+Maintained by Trinity Cheng | 2026
