@@ -219,13 +219,15 @@ function App() {
 
           <Route
             path="/admin-dashboard"
-            element={
-              isLoggedIn && user?.role === "admin" ? (
-                <AdminDashboard />
-              ) : (
-                <Navigate to="/" replace />
-              )
-            }
+            element={(() => {
+              const savedUser = JSON.parse(localStorage.getItem("user"));
+
+              if (savedUser && savedUser.role === "admin") {
+                return <AdminDashboard />;
+              } else {
+                return <Navigate to="/" replace />;
+              }
+            })()}
           />
         </Routes>
       </main>
