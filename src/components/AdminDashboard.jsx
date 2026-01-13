@@ -7,14 +7,18 @@ function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // AdminDashboard.jsx
+
   useEffect(() => {
     const fetchAllOrders = async () => {
       try {
         const token = localStorage.getItem("token");
 
         const formattedToken = token?.startsWith("JWT ")
+          ? token.replace("JWT ", "Bearer ")
+          : token?.startsWith("Bearer ")
           ? token
-          : `JWT ${token}`;
+          : `Bearer ${token}`;
 
         const response = await axios.get(
           "https://maybeige-api.onrender.com/api/orders/all-orders",
