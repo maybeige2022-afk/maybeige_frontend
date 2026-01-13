@@ -3,7 +3,6 @@ $gray-light: #d9d9d9;
 $cream: #fffdf0;
 $brown: #6b4028;
 $red: #932619;
-$blue: #5bc0de;
 
 .admin-dashboard-container {
   padding: 120px 50px 50px;
@@ -62,10 +61,29 @@ $blue: #5bc0de;
       color: #888;
     }
 
-    .order-item-detail {
-      font-size: 12px;
-      color: $gray;
-      margin-bottom: 4px;
+    .order-item-group {
+      margin-bottom: 8px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .item-main {
+        font-size: 14px;
+        color: $gray;
+        line-height: 1.4;
+
+        .item-qty {
+          font-weight: bold;
+          color: $brown;
+          margin-left: 5px;
+        }
+      }
+
+      .item-sub {
+        font-size: 12px;
+        color: #888;
+        line-height: 1.4;
+      }
     }
 
     .order-amount {
@@ -89,7 +107,7 @@ $blue: #5bc0de;
           font-weight: 500;
         }
         &.donation {
-          color: $blue;
+          color: $red;
         }
       }
       .no-invoice {

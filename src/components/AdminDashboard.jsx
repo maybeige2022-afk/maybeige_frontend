@@ -89,9 +89,14 @@ function AdminDashboard() {
                 </td>
                 <td>
                   {order.items?.map((item, index) => (
-                    <div key={index} className="order-item-detail">
-                      {item.name} {item.size ? `(${item.size})` : ""} x{" "}
-                      {item.quantity}
+                    <div key={index} className="order-item-group">
+                      <div className="item-main">
+                        {item.name}{" "}
+                        <span className="item-qty">x {item.quantity}</span>
+                      </div>
+                      <div className="item-sub">
+                        {item.style} {item.size ? `(${item.size}cm)` : ""}
+                      </div>
                     </div>
                   ))}
                 </td>
