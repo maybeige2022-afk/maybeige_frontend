@@ -11,10 +11,15 @@ function AdminDashboard() {
     const fetchAllOrders = async () => {
       try {
         const token = localStorage.getItem("token");
+
+        const formattedToken = token?.startsWith("JWT ")
+          ? token
+          : `JWT ${token}`;
+
         const response = await axios.get(
           "https://maybeige-api.onrender.com/api/orders/all-orders",
           {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: { Authorization: formattedToken },
           }
         );
         setOrders(response.data);
