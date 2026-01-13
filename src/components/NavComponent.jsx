@@ -64,13 +64,13 @@ function NavComponent({ isLoggedIn, setToast, cartItems = [] }) {
       {/* RWD */}
       <div className="nav-right-section desktop-only">
         <div className="nav-links">
-          <NavLink to="/all">ALL</NavLink>
-
           {isLoggedIn && role === "admin" && (
             <NavLink to="/admin-dashboard" className="admin-link">
               ADMIN
             </NavLink>
           )}
+
+          <NavLink to="/all">ALL</NavLink>
 
           <NavLink to="/cart">CART</NavLink>
 

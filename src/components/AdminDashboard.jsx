@@ -7,25 +7,19 @@ function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // AdminDashboard.jsx
-
   useEffect(() => {
     const fetchAllOrders = async () => {
       try {
         const token = localStorage.getItem("token");
-
         const formattedToken = token?.startsWith("JWT ")
           ? token.replace("JWT ", "Bearer ")
           : token?.startsWith("Bearer ")
           ? token
           : `Bearer ${token}`;
-        console.log("發送給後台的 Token:", formattedToken);
 
         const response = await axios.get(
           "https://maybeige-api.onrender.com/api/orders/all-orders",
-          {
-            headers: { Authorization: formattedToken },
-          }
+          { headers: { Authorization: formattedToken } }
         );
         setOrders(response.data);
         setLoading(false);
@@ -35,9 +29,33 @@ function AdminDashboard() {
         setLoading(false);
       }
     };
-
     fetchAllOrders();
   }, []);
+
+  const renderInvoice = (invoice) => {
+    if (!invoice) return <span className="no-invoice">無發票資訊</span>;
+
+    let detailText = "";
+    let className = "invoice-tag";
+
+    if (invoice.type === "個人發票") {
+      detailText = `載具: ${invoice.carrier || "紙本"}`;
+      className += " personal";
+    } else if (invoice.type === "法人發票") {
+      detailText = `統編: ${invoice.vatNumber}`;
+      className += " business";
+    } else if (invoice.type === "捐贈發票") {
+      detailText = `捐贈碼: ${invoice.donationCode}`;
+      className += " donation";
+    }
+
+    return (
+      <div className="invoice-container">
+        <div className="invoice-type">{invoice.type}</div>
+        <div className={className}>{detailText}</div>
+      </div>
+    );
+  };
 
   if (loading) return <div className="admin-status">正在讀取訂單資料...</div>;
   if (error) return <div className="admin-status error">{error}</div>;
@@ -45,7 +63,7 @@ function AdminDashboard() {
   return (
     <div className="admin-dashboard-container">
       <div className="admin-header">
-        <h1>MAYBEIGE 後台管理</h1>
+        <h1>後台訂單管理</h1>
         <p>當前總訂單數：{orders.length} 筆</p>
       </div>
 
@@ -54,31 +72,33 @@ function AdminDashboard() {
           <thead>
             <tr>
               <th>訂單編號</th>
-              <th>客戶名稱</th>
-              <th>電話</th>
+              <th>客戶資訊</th>
               <th>訂單內容</th>
               <th>總金額</th>
+              <th>發票資訊</th>
               <th>狀態</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
               <tr key={order._id}>
-                <td style={{ fontSize: "12px", color: "#999" }}>
-                  {order.orderId}
-                </td>
-                <td>{order.customer?.name}</td>
-                <td>{order.customer?.phone}</td>
+                <td className="order-id-cell">{order.orderId}</td>
                 <td>
-                  {order.items &&
-                    order.items.map((item, index) => (
-                      <div key={index} className="order-item-detail">
-                        {item.name} {item.size ? `(${item.size})` : ""} x{" "}
-                        {item.quantity}
-                      </div>
-                    ))}
+                  <div className="cust-name">{order.customer?.name}</div>
+                  <div className="cust-phone">{order.customer?.phone}</div>
                 </td>
-                <td className="order-amount">${order.total}</td>
+                <td>
+                  {order.items?.map((item, index) => (
+                    <div key={index} className="order-item-detail">
+                      {item.name} {item.size ? `(${item.size})` : ""} x{" "}
+                      {item.quantity}
+                    </div>
+                  ))}
+                </td>
+                <td className="order-amount">
+                  ${order.total?.toLocaleString()}
+                </td>
+                <td>{renderInvoice(order.invoice)}</td>
                 <td>
                   <span className="status-badge">
                     {order.status || "處理中"}

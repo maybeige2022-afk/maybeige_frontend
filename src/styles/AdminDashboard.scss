@@ -3,6 +3,7 @@ $gray-light: #d9d9d9;
 $cream: #fffdf0;
 $brown: #6b4028;
 $red: #932619;
+$blue: #5bc0de;
 
 .admin-dashboard-container {
   padding: 120px 50px 50px;
@@ -11,13 +12,15 @@ $red: #932619;
 
   .admin-header {
     margin-bottom: 40px;
+    text-align: center;
     h1 {
       color: $brown;
-      font-style: italic;
       font-size: 28px;
+      letter-spacing: 2px;
     }
     p {
       color: $gray;
+      letter-spacing: 2px;
     }
   }
 
@@ -26,6 +29,7 @@ $red: #932619;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
   }
 
   .order-table {
@@ -47,15 +51,49 @@ $red: #932619;
       vertical-align: top;
     }
 
-    .order-item-detail {
+    .order-id-cell {
+      font-size: 11px;
+      color: $gray;
+    }
+
+    .cust-phone {
       font-size: 12px;
       color: #888;
+    }
+
+    .order-item-detail {
+      font-size: 12px;
+      color: $gray;
       margin-bottom: 4px;
     }
 
     .order-amount {
       font-weight: bold;
       color: $brown;
+    }
+
+    .invoice-container {
+      font-size: 12px;
+      .invoice-type {
+        font-weight: bold;
+        color: $gray;
+        margin-bottom: 2px;
+      }
+      .invoice-tag {
+        &.personal {
+          color: #888;
+        }
+        &.business {
+          color: $red;
+          font-weight: 500;
+        }
+        &.donation {
+          color: $blue;
+        }
+      }
+      .no-invoice {
+        color: $gray-light;
+      }
     }
 
     .status-badge {
@@ -65,14 +103,5 @@ $red: #932619;
       border-radius: 3px;
       font-size: 12px;
     }
-  }
-}
-
-.admin-status {
-  padding-top: 150px;
-  text-align: center;
-  color: $gray;
-  &.error {
-    color: $red;
   }
 }
