@@ -19,6 +19,7 @@ function AdminDashboard() {
           : token?.startsWith("Bearer ")
           ? token
           : `Bearer ${token}`;
+        console.log("發送給後台的 Token:", formattedToken);
 
         const response = await axios.get(
           "https://maybeige-api.onrender.com/api/orders/all-orders",
