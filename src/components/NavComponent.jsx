@@ -11,15 +11,19 @@ function NavComponent({ isLoggedIn, setToast, cartItems = [] }) {
   // RWD
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+  const [role, setRole] = useState("");
+
   useEffect(() => {
     if (isLoggedIn) {
       const userData = localStorage.getItem("user");
       if (userData) {
         const user = JSON.parse(userData);
         setUsername(user.username);
+        setRole(user.role);
       }
     } else {
       setUsername("");
+      setRole("");
     }
   }, [isLoggedIn]);
 
@@ -61,6 +65,13 @@ function NavComponent({ isLoggedIn, setToast, cartItems = [] }) {
       <div className="nav-right-section desktop-only">
         <div className="nav-links">
           <NavLink to="/all">ALL</NavLink>
+
+          {isLoggedIn && role === "admin" && (
+            <NavLink to="/admin-dashboard" className="admin-link">
+              ADMIN
+            </NavLink>
+          )}
+
           <NavLink to="/cart">CART</NavLink>
 
           {!isLoggedIn && <NavLink to="/login">LOGIN</NavLink>}
@@ -123,6 +134,16 @@ function NavComponent({ isLoggedIn, setToast, cartItems = [] }) {
           <NavLink to="/all" onClick={closeDrawer}>
             ALL
           </NavLink>
+
+          {isLoggedIn && role === "admin" && (
+            <NavLink
+              to="/admin-dashboard"
+              onClick={closeDrawer}
+              className="admin-link"
+            >
+              ADMIN DASHBOARD
+            </NavLink>
+          )}
 
           {!isLoggedIn && (
             <NavLink to="/login" onClick={closeDrawer}>

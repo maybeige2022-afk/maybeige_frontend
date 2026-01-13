@@ -14,6 +14,7 @@ import ToastComponent from "./components/ToastComponent";
 import FooterComponent from "./components/FooterComponent";
 import GoogleSuccess from "./components/GoogleSuccess";
 import ResetPasswordComponent from "./components/ResetPasswordComponent";
+import AdminDashboard from "./components/AdminDashboard";
 
 function App() {
   const [allProducts, setAllProducts] = useState([]);
@@ -34,6 +35,11 @@ function App() {
 
   const [toast, setToast] = useState({ show: false, message: "" });
 
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -50,8 +56,10 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const savedUser = localStorage.getItem("user");
     if (token) {
       setIsLoggedIn(true);
+      if (savedUser) setUser(JSON.parse(savedUser));
     }
   }, []);
 
@@ -74,10 +82,12 @@ function App() {
     localStorage.setItem("current_user_email", user.email);
     localStorage.setItem("user", JSON.stringify(user));
     setIsLoggedIn(true);
+    setUser(user);
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
+    setUser(null);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     localStorage.removeItem("current_user_email");
@@ -204,6 +214,17 @@ function App() {
                 setToast={setToast}
                 clearCart={clearCart}
               />
+            }
+          />
+
+          <Route
+            path="/admin-dashboard"
+            element={
+              isLoggedIn && user?.role === "admin" ? (
+                <AdminDashboard />
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
         </Routes>

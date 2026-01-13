@@ -49,13 +49,23 @@ body {
         color: inherit;
         cursor: pointer;
         transition: color 0.3s;
-
         &:hover {
           color: $brown;
         }
         &.active {
           color: $brown;
           font-weight: bold;
+        }
+      }
+
+      .admin-link {
+        color: $gray;
+        font-weight: 600;
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s;
+        &:hover {
+          color: $brown;
+          border-bottom: 1px solid $brown;
         }
       }
     }
@@ -226,6 +236,12 @@ body {
           &.active {
             color: $brown;
             font-weight: bold;
+          }
+
+          &.admin-link {
+            color: $brown;
+            font-weight: bold;
+            border-bottom: 1px solid $gray-light;
           }
         }
       }
