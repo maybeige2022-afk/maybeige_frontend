@@ -16,7 +16,7 @@ $blue: #5bc0de;
     h1 {
       color: $brown;
       font-size: 28px;
-      letter-spacing: 2px;
+      letter-spacing: 4px;
     }
     p {
       color: $gray;
@@ -38,17 +38,18 @@ $blue: #5bc0de;
 
     th {
       text-align: left;
-      padding: 15px;
+      padding: 20px 15px;
       border-bottom: 2px solid $gray-light;
       color: $gray;
       font-size: 14px;
+      vertical-align: middle;
     }
 
     td {
-      padding: 15px;
+      padding: 20px 15px;
       border-bottom: 1px solid #f0f0f0;
       font-size: 14px;
-      vertical-align: top;
+      vertical-align: middle;
     }
 
     .order-id-cell {
