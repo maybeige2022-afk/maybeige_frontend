@@ -3,6 +3,8 @@ import "../styles/LoginComponent.scss";
 import axios from "axios";
 
 function LoginComponent({ onLogin, setToast }) {
+  const apiBaseUrl =
+    import.meta.env.VITE_API_URL || "https://maybeige-api.onrender.com/api";
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +20,7 @@ function LoginComponent({ onLogin, setToast }) {
   };
 
   const handleGoogleAction = () => {
-    window.location.href = "https://maybeige-api.onrender.com/api/user/google";
+    window.location.href = `${apiBaseUrl}/user/google`;
   };
 
   const handleForgotPassword = async () => {
@@ -27,12 +29,9 @@ function LoginComponent({ onLogin, setToast }) {
 
     try {
       setToast({ show: true, message: "正在發送重設郵件..." });
-      const response = await axios.post(
-        "https://maybeige-api.onrender.com/api/user/forgot-password",
-        {
-          email: targetEmail.toLowerCase().trim(),
-        }
-      );
+      const response = await axios.post(`${apiBaseUrl}/user/forgot-password`, {
+        email: targetEmail.toLowerCase().trim(),
+      });
       if (response.data.success)
         setToast({ show: true, message: "重設郵件已發送，請檢查信箱。" });
     } catch (err) {
@@ -58,13 +57,11 @@ function LoginComponent({ onLogin, setToast }) {
         return;
       }
       try {
-        const response = await axios.post(
-          "https://maybeige-api.onrender.com/api/user/login",
-          {
-            email: userKey,
-            password: password,
-          }
-        );
+        const response = await axios.post(`${apiBaseUrl}/user/login`, {
+          email: userKey,
+          password: password,
+        });
+
         if (response.data.success) {
           onLogin(response.data.token, response.data.user);
           setToast({ show: true, message: "登入成功，歡迎回來！" });
@@ -89,15 +86,12 @@ function LoginComponent({ onLogin, setToast }) {
         setToast({ show: true, message: "密碼需包含至少一個英文與數字" });
       } else {
         try {
-          await axios.post(
-            "https://maybeige-api.onrender.com/api/user/register",
-            {
-              username: name,
-              email: userKey,
-              password: password,
-              phone: "",
-            }
-          );
+          await axios.post(`${apiBaseUrl}/user/register`, {
+            username: name,
+            email: userKey,
+            password: password,
+            phone: "",
+          });
           setToast({ show: true, message: "歡迎加入！註冊成功，請登入" });
           setIsLogin(true);
         } catch (err) {

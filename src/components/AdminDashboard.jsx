@@ -3,6 +3,9 @@ import axios from "axios";
 import "../styles/AdminDashboard.scss";
 
 function AdminDashboard() {
+  const apiBaseUrl =
+    import.meta.env.VITE_API_URL || "https://maybeige-api.onrender.com/api";
+
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -18,10 +21,9 @@ function AdminDashboard() {
         ? token
         : `Bearer ${token}`;
 
-      const response = await axios.get(
-        "https://maybeige-api.onrender.com/api/orders/all-orders",
-        { headers: { Authorization: formattedToken } }
-      );
+      const response = await axios.get(`${apiBaseUrl}/orders/all-orders`, {
+        headers: { Authorization: formattedToken },
+      });
       setOrders(response.data);
       setLoading(false);
     } catch (err) {
@@ -82,7 +84,7 @@ function AdminDashboard() {
         : `Bearer ${token}`;
 
       await axios.patch(
-        `https://maybeige-api.onrender.com/api/orders/${orderId}/status`,
+        `${apiBaseUrl}/orders/${orderId}/status`,
         { status: newStatus },
         { headers: { Authorization: formattedToken } }
       );

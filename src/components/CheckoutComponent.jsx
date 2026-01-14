@@ -4,6 +4,9 @@ import axios from "axios";
 import "../styles/CheckoutComponent.scss";
 
 function CheckoutComponent({ cartItems = [], setToast, clearCart }) {
+  const apiBaseUrl =
+    import.meta.env.VITE_API_URL || "https://maybeige-api.onrender.com/api";
+
   const navigate = useNavigate();
   const currentEmail = localStorage.getItem("current_user_email") || "";
   const allUsers = JSON.parse(localStorage.getItem("all_users") || "{}");
@@ -56,7 +59,7 @@ function CheckoutComponent({ cartItems = [], setToast, clearCart }) {
       }
 
       const response = await axios.post(
-        "https://maybeige-api.onrender.com/api/user/validate-coupon",
+        `${apiBaseUrl}/user/validate-coupon`,
         { couponCode: couponCode.trim() },
         { headers: { Authorization: finalToken } }
       );
@@ -139,11 +142,9 @@ function CheckoutComponent({ cartItems = [], setToast, clearCart }) {
         status: "處理中",
       };
 
-      const response = await axios.post(
-        "https://maybeige-api.onrender.com/api/orders",
-        orderData,
-        { headers: { Authorization: finalToken } }
-      );
+      const response = await axios.post(`${apiBaseUrl}/orders`, orderData, {
+        headers: { Authorization: finalToken },
+      });
 
       if (response.status === 200 || response.status === 201) {
         setToast({ show: true, message: "付款成功！即將為您導向會員中心" });

@@ -4,6 +4,9 @@ import axios from "axios";
 import "../styles/ResetPasswordComponent.scss";
 
 const ResetPasswordComponent = () => {
+  const apiBaseUrl =
+    import.meta.env.VITE_API_URL || "https://maybeige-api.onrender.com/api";
+
   const { token } = useParams();
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
@@ -26,12 +29,9 @@ const ResetPasswordComponent = () => {
     }
 
     try {
-      await axios.post(
-        `https://maybeige-api.onrender.com/api/user/reset-password/${token}`,
-        {
-          password: password,
-        }
-      );
+      await axios.post(`${apiBaseUrl}/user/reset-password/${token}`, {
+        password: password,
+      });
       alert("密碼重設成功，請重新登入");
       navigate("/login");
     } catch (err) {

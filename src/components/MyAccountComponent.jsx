@@ -3,6 +3,9 @@ import axios from "axios";
 import "../styles/MyAccountComponent.scss";
 
 function MyAccountComponent({ onLogout, setToast }) {
+  const apiBaseUrl =
+    import.meta.env.VITE_API_URL || "https://maybeige-api.onrender.com/api";
+
   const [userInfo, setUserInfo] = useState({ email: "", name: "", phone: "" });
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,10 +22,10 @@ function MyAccountComponent({ onLogout, setToast }) {
           : `Bearer ${token}`;
 
         const [userRes, orderRes] = await Promise.all([
-          axios.get("https://maybeige-api.onrender.com/api/user/profile", {
+          axios.get(`${apiBaseUrl}/user/profile`, {
             headers: { Authorization: formattedToken },
           }),
-          axios.get("https://maybeige-api.onrender.com/api/orders/my-orders", {
+          axios.get(`${apiBaseUrl}/orders/my-orders`, {
             headers: { Authorization: formattedToken },
           }),
         ]);
@@ -42,14 +45,15 @@ function MyAccountComponent({ onLogout, setToast }) {
       }
     };
     fetchData();
-  }, [setToast]);
+  }, [setToast, apiBaseUrl]);
 
   const handleUpdate = async (type) => {
     try {
       const token = localStorage.getItem("token");
       const formattedToken = token?.replace("JWT ", "Bearer ");
+
       const response = await axios.patch(
-        "https://maybeige-api.onrender.com/api/user/update-info",
+        `${apiBaseUrl}/user/update-info`,
         { username: userInfo.name, phone: userInfo.phone },
         { headers: { Authorization: formattedToken } }
       );
