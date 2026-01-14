@@ -131,15 +131,15 @@ function NavComponent({ isLoggedIn, setToast, cartItems = [] }) {
         </div>
 
         <div className="drawer-links">
-          <NavLink to="/all" onClick={closeDrawer}>
-            ALL
-          </NavLink>
-
           {isLoggedIn && role === "admin" && (
             <NavLink to="/admin-dashboard" onClick={closeDrawer}>
               ADMIN DASHBOARD
             </NavLink>
           )}
+
+          <NavLink to="/all" onClick={closeDrawer}>
+            ALL
+          </NavLink>
 
           {!isLoggedIn && (
             <NavLink to="/login" onClick={closeDrawer}>
