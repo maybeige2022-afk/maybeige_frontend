@@ -235,50 +235,74 @@ $red: #932619;
 
 @media (max-width: 576px) {
   .admin-dashboard-container {
-    padding: 80px 20px 30px;
+    padding: 100px 15px 30px;
 
     .admin-header {
+      margin-bottom: 25px;
       h1 {
-        font-size: 22px;
-        letter-spacing: 3px;
+        font-size: 20px;
+        letter-spacing: 2px;
+      }
+      p {
+        font-size: 13px;
       }
     }
 
     .admin-controls {
       flex-direction: column;
       align-items: stretch;
-      gap: 10px;
+      gap: 12px;
 
-      .search-bar {
-        width: 100%;
-      }
-
-      .filter-group {
-        select {
-          width: 100%;
-        }
-      }
-
+      .search-bar,
+      .filter-group,
       .export-btn {
         width: 100%;
-        padding: 12px;
+      }
+
+      input,
+      select,
+      .export-btn {
+        height: 45px;
+        line-height: 45px;
+        padding: 0 15px !important;
+        font-size: 14px;
+        box-sizing: border-box;
       }
     }
 
     .order-table-wrapper {
-      padding: 10px;
+      padding: 5px;
+      border-radius: 8px;
+      &::-webkit-scrollbar {
+        height: 4px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: $gray-light;
+        border-radius: 10px;
+      }
+    }
 
-      .order-table {
-        th,
-        td {
-          padding: 12px 10px;
+    .order-table {
+      min-width: 600px;
+
+      th,
+      td {
+        padding: 15px 10px;
+        font-size: 13px;
+      }
+
+      .order-item-group {
+        .item-main {
           font-size: 13px;
         }
-
-        .order-id-cell {
-          display: block;
-          margin-bottom: 5px;
+        .item-sub {
+          font-size: 11px;
         }
+      }
+
+      .status-select {
+        padding: 8px 5px;
+        width: 90px;
       }
     }
   }
