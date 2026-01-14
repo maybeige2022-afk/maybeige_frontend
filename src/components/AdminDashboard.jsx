@@ -6,6 +6,8 @@ function AdminDashboard() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterStatus, setFilterStatus] = useState("全部");
 
   const fetchAllOrders = async () => {
     try {
@@ -32,6 +34,18 @@ function AdminDashboard() {
   useEffect(() => {
     fetchAllOrders();
   }, []);
+
+  const filteredOrders = orders.filter((order) => {
+    const matchesSearch =
+      order.orderId?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      order.customer?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      order.customer?.phone?.includes(searchTerm);
+
+    const matchesStatus =
+      filterStatus === "全部" || order.status === filterStatus;
+
+    return matchesSearch && matchesStatus;
+  });
 
   const handleStatusChange = async (orderId, newStatus) => {
     try {
@@ -94,6 +108,29 @@ function AdminDashboard() {
         <p>當前總訂單數：{orders.length} 筆</p>
       </div>
 
+      <div className="admin-controls">
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="搜尋訂單編號、姓名或電話..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        <div className="filter-group">
+          <select
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+          >
+            <option value="全部">所有狀態</option>
+            <option value="處理中">處理中</option>
+            <option value="運送中">運送中</option>
+            <option value="已完成">已完成</option>
+            <option value="已取消">已取消</option>
+          </select>
+        </div>
+      </div>
+
       <div className="order-table-wrapper">
         <table className="order-table">
           <thead>
@@ -107,7 +144,7 @@ function AdminDashboard() {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {filteredOrders.map((order) => (
               <tr key={order._id}>
                 <td className="order-id-cell">{order.orderId}</td>
                 <td>
@@ -147,6 +184,14 @@ function AdminDashboard() {
                 </td>
               </tr>
             ))}
+
+            {filteredOrders.length === 0 && (
+              <tr>
+                <td colSpan="6" className="no-results">
+                  找不到符合搜尋條件的訂單
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

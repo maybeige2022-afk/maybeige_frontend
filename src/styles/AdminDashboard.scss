@@ -1,3 +1,4 @@
+// 變數設定 (完整保留妳的定義)
 $gray: #626060;
 $gray-light: #d9d9d9;
 $cream: #fffdf0;
@@ -20,6 +21,48 @@ $red: #932619;
     p {
       color: $gray;
       letter-spacing: 2px;
+    }
+  }
+
+  .admin-controls {
+    max-width: 100%;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+
+    .search-bar {
+      flex: 1;
+      input {
+        width: 100%;
+        padding: 12px 20px;
+        border: 1px solid $gray-light;
+        border-radius: 5px;
+        font-size: 14px;
+        color: $gray;
+        outline: none;
+        transition: border-color 0.3s;
+
+        &:focus {
+          border-color: $brown;
+        }
+      }
+    }
+
+    .filter-group {
+      select {
+        padding: 12px 15px;
+        border: 1px solid $gray-light;
+        border-radius: 5px;
+        background-color: white;
+        color: $gray;
+        font-size: 14px;
+        cursor: pointer;
+        outline: none;
+
+        &:focus {
+          border-color: $brown;
+        }
+      }
     }
   }
 
@@ -115,12 +158,44 @@ $red: #932619;
       }
     }
 
-    .status-badge {
+    .status-select {
       background-color: $gray-light;
       color: $gray;
-      padding: 4px 8px;
+      padding: 6px 10px;
+      border: 1px solid transparent;
       border-radius: 3px;
       font-size: 12px;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
+
+      &:hover {
+        border-color: $brown;
+      }
+
+      &.處理中 {
+        background-color: #f0f0f0;
+      }
+      &.運送中 {
+        background-color: #fff9db;
+        color: #f08c00;
+      }
+      &.已完成 {
+        background-color: #ebfbee;
+        color: #2f9e44;
+      }
+      &.已取消 {
+        background-color: #fff5f5;
+        color: $red;
+      }
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 50px;
+      color: $gray-light;
+      font-size: 16px;
+      letter-spacing: 2px;
     }
   }
 }
