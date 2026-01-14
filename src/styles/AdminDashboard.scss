@@ -5,7 +5,7 @@ $brown: #6b4028;
 $red: #932619;
 
 .admin-dashboard-container {
-  padding: 120px 50px 50px;
+  padding: 100px 50px 50px;
   background-color: $cream;
   min-height: 100vh;
   font-family: inherit;
@@ -223,6 +223,63 @@ $red: #932619;
       color: $gray-light;
       font-size: 16px;
       letter-spacing: 2px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .admin-dashboard-container {
+    min-height: 860px;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-dashboard-container {
+    padding: 80px 20px 30px;
+
+    .admin-header {
+      h1 {
+        font-size: 22px;
+        letter-spacing: 3px;
+      }
+    }
+
+    .admin-controls {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+
+      .search-bar {
+        width: 100%;
+      }
+
+      .filter-group {
+        select {
+          width: 100%;
+        }
+      }
+
+      .export-btn {
+        width: 100%;
+        padding: 12px;
+      }
+    }
+
+    .order-table-wrapper {
+      padding: 10px;
+
+      .order-table {
+        th,
+        td {
+          padding: 12px 10px;
+          font-size: 13px;
+        }
+
+        .order-id-cell {
+          display: block;
+          margin-bottom: 5px;
+        }
+      }
     }
   }
 }
