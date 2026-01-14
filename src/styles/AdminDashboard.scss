@@ -235,7 +235,7 @@ $red: #932619;
 
 @media (max-width: 576px) {
   .admin-dashboard-container {
-    padding: 100px 15px 30px;
+    padding: 80px 15px 30px;
 
     .admin-header {
       margin-bottom: 25px;
@@ -257,6 +257,10 @@ $red: #932619;
       .filter-group,
       .export-btn {
         width: 100%;
+      }
+
+      .filter-group {
+        letter-spacing: 5px;
       }
 
       input,
