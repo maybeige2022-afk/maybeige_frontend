@@ -18,10 +18,22 @@
 
 ## 技術棧
 
-- **前台架構**：React 18 / React Router 6 / Axios / SCSS
+- **設計工具**：Figma
+- **前台架構**：React 18 / Vite / React Router 6 / Axios / SCSS
 - **後端引擎**：Node.js / Express / MongoDB (Atlas)
 - **資安驗證**：Google OAuth 2.0 / JSON Web Token (JWT)
-- **設計工具**：Figma
+- **環境管理**：Dotenv (Cross-environment configuration)
+
+---
+
+## 開發與部署架構優化 (DevOps Highlight)
+
+本專案實作 **自動化環境切換機制**，確保開發效率與正式環境的穩定性：
+
+- **環境解耦與自動偵測**：利用 Vite 的環境變數機制 (`.env`)，系統會根據執行指令自動切換 API 端點。
+  - **開發環境 (`npm run dev`)**：自動連接本地 `localhost:8080` 後端，加速開發與除錯。
+  - **生產環境 (`npm run build`)**：自動注入 Render 雲端 API 網址，實現無縫部署。
+- **CORS 動態安全政策**：後端實作動態來源檢查，確保僅允許受信任的網域進行跨域請求，兼顧開發便利性與線上資產安全。
 
 ---
 
@@ -66,10 +78,10 @@
   - **邏輯抽離**：將複雜的發票顯示邏輯封裝於 `renderInvoice` 函數，提升代碼可維護性。
   - **精確對齊技術**：透過 SCSS 的 `vertical-align: middle` 與一致的 `padding` 補償，解決多行文字與單行文字共存時的視覺偏差。
 
-### 3. 多層級組件的狀態提升 (Lifting State Up)
+### 3. 跨環境 API 整合與 CORS 障礙
 
-- **描述**：由於購物車資訊分散在導覽列、商品頁與側邊購物車中，傳統傳遞方式會導致資料不一致。
-- **解決方案**：將核心狀態提升至根組件 `App.js`，透過單向資料流控管所有數據變動，確保全站購物車資訊即時同步。
+- **描述**：在本地開發與遠端部署間頻繁手動修改 API 網址容易出錯，且會觸發瀏覽器 CORS 攔截。
+- **解決方案**：導入 `import.meta.env` 環境變數管理，配合後端 `cors` 套件的動態配置，實現了「代碼不變、環境自動感應」的自動化流程。
 
 ---
 
