@@ -73,4 +73,4 @@
 
 ---
 
-Maintained by Maybeige (Trinity Cheng) | 2026
+Maintained by Trinity Cheng | 2026
