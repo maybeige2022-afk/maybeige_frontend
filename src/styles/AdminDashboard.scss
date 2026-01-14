@@ -259,10 +259,6 @@ $red: #932619;
         width: 100%;
       }
 
-      .filter-group {
-        letter-spacing: 5px;
-      }
-
       input,
       select,
       .export-btn {
@@ -272,6 +268,10 @@ $red: #932619;
         padding: 0 15px !important;
         font-size: 14px;
         box-sizing: border-box;
+      }
+
+      .export-btn {
+        letter-spacing: 5px;
       }
     }
 
