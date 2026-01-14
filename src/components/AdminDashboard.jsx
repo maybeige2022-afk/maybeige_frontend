@@ -7,30 +7,57 @@ function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchAllOrders = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const formattedToken = token?.startsWith("JWT ")
-          ? token.replace("JWT ", "Bearer ")
-          : token?.startsWith("Bearer ")
-          ? token
-          : `Bearer ${token}`;
+  const fetchAllOrders = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const formattedToken = token?.startsWith("JWT ")
+        ? token.replace("JWT ", "Bearer ")
+        : token?.startsWith("Bearer ")
+        ? token
+        : `Bearer ${token}`;
 
-        const response = await axios.get(
-          "https://maybeige-api.onrender.com/api/orders/all-orders",
-          { headers: { Authorization: formattedToken } }
-        );
-        setOrders(response.data);
-        setLoading(false);
-      } catch (err) {
-        console.error("抓取訂單失敗:", err);
-        setError("無法取得訂單資料，請確認管理員權限。");
-        setLoading(false);
-      }
-    };
+      const response = await axios.get(
+        "https://maybeige-api.onrender.com/api/orders/all-orders",
+        { headers: { Authorization: formattedToken } }
+      );
+      setOrders(response.data);
+      setLoading(false);
+    } catch (err) {
+      console.error("抓取訂單失敗:", err);
+      setError("無法取得訂單資料，請確認管理員權限。");
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchAllOrders();
   }, []);
+
+  const handleStatusChange = async (orderId, newStatus) => {
+    try {
+      const token = localStorage.getItem("token");
+      const formattedToken = token?.startsWith("JWT ")
+        ? token.replace("JWT ", "Bearer ")
+        : token?.startsWith("Bearer ")
+        ? token
+        : `Bearer ${token}`;
+
+      await axios.patch(
+        `https://maybeige-api.onrender.com/api/orders/${orderId}/status`,
+        { status: newStatus },
+        { headers: { Authorization: formattedToken } }
+      );
+
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order._id === orderId ? { ...order, status: newStatus } : order
+        )
+      );
+    } catch (err) {
+      console.error("更新訂單狀態失敗:", err);
+      alert("更新失敗，請確認網路或管理員權限");
+    }
+  };
 
   const renderInvoice = (invoice) => {
     if (!invoice) return <span className="no-invoice">無發票資訊</span>;
@@ -76,7 +103,7 @@ function AdminDashboard() {
               <th>訂單內容</th>
               <th>總金額</th>
               <th>發票資訊</th>
-              <th>狀態</th>
+              <th>狀態更新</th>
             </tr>
           </thead>
           <tbody>
@@ -105,9 +132,18 @@ function AdminDashboard() {
                 </td>
                 <td>{renderInvoice(order.invoice)}</td>
                 <td>
-                  <span className="status-badge">
-                    {order.status || "處理中"}
-                  </span>
+                  <select
+                    className={`status-select ${order.status}`}
+                    value={order.status || "處理中"}
+                    onChange={(e) =>
+                      handleStatusChange(order._id, e.target.value)
+                    }
+                  >
+                    <option value="處理中">處理中</option>
+                    <option value="運送中">運送中</option>
+                    <option value="已完成">已完成</option>
+                    <option value="已取消">已取消</option>
+                  </select>
                 </td>
               </tr>
             ))}
