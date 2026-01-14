@@ -70,6 +70,7 @@ body {
         outline: none;
         background: transparent;
         font-size: 13px;
+        font-family: inherit;
         color: $gray;
         flex: 1;
         &::placeholder {
@@ -199,6 +200,7 @@ body {
           outline: none;
           width: 100%;
           font-size: 15px;
+          font-family: inherit;
           background: transparent;
         }
         .search-icon {
@@ -225,12 +227,6 @@ body {
           &.active {
             color: $brown;
             font-weight: bold;
-          }
-
-          &.admin-link {
-            color: $brown;
-            font-weight: bold;
-            border-bottom: 1px solid $gray-light;
           }
         }
       }

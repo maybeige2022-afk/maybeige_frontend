@@ -85,7 +85,7 @@ function NavComponent({ isLoggedIn, setToast, cartItems = [] }) {
         <div className="search-bar">
           <input
             type="text"
-            placeholder="Search"
+            placeholder="搜尋商品"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -136,11 +136,7 @@ function NavComponent({ isLoggedIn, setToast, cartItems = [] }) {
           </NavLink>
 
           {isLoggedIn && role === "admin" && (
-            <NavLink
-              to="/admin-dashboard"
-              onClick={closeDrawer}
-              className="admin-link"
-            >
+            <NavLink to="/admin-dashboard" onClick={closeDrawer}>
               ADMIN DASHBOARD
             </NavLink>
           )}
