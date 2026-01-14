@@ -44,7 +44,7 @@ $red: #932619;
         transition: border-color 0.3s;
 
         &:focus {
-          border-color: $brown;
+          border-color: $gray;
         }
       }
     }
@@ -61,7 +61,7 @@ $red: #932619;
         outline: none;
 
         &:focus {
-          border-color: $brown;
+          border-color: $gray;
         }
       }
     }
@@ -262,6 +262,7 @@ $red: #932619;
       input,
       select,
       .export-btn {
+        width: 100%;
         height: 45px;
         line-height: 45px;
         padding: 0 15px !important;
@@ -283,7 +284,7 @@ $red: #932619;
     }
 
     .order-table {
-      min-width: 600px;
+      min-width: 700px;
 
       th,
       td {
@@ -303,6 +304,7 @@ $red: #932619;
       .status-select {
         padding: 8px 5px;
         width: 90px;
+        height: auto;
       }
     }
   }
