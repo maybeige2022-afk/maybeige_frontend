@@ -61,7 +61,6 @@ function NavComponent({ isLoggedIn, setToast, cartItems = [] }) {
         MAYBEIGE
       </Link>
 
-      {/* RWD */}
       <div className="nav-right-section desktop-only">
         <div className="nav-links">
           {isLoggedIn && role === "admin" && (
@@ -130,10 +129,11 @@ function NavComponent({ isLoggedIn, setToast, cartItems = [] }) {
           ></i>
         </div>
 
+        {/* RWD */}
         <div className="drawer-links">
           {isLoggedIn && role === "admin" && (
             <NavLink to="/admin-dashboard" onClick={closeDrawer}>
-              ADMIN DASHBOARD
+              ADMIN
             </NavLink>
           )}
 
