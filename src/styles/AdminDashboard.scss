@@ -37,7 +37,6 @@ $red: #932619;
         width: 100%;
         padding: 12px 20px;
         border: 1px solid $gray-light;
-        border-radius: 5px;
         font-size: 14px;
         color: $gray;
         outline: none;
@@ -54,7 +53,6 @@ $red: #932619;
       select {
         padding: 12px 15px;
         border: 1px solid $gray-light;
-        border-radius: 5px;
         background-color: white;
         color: $gray;
         font-size: 14px;
@@ -73,7 +71,6 @@ $red: #932619;
       background-color: $brown;
       color: white;
       border: none;
-      border-radius: 5px;
       font-size: 14px;
       font-family: inherit;
       cursor: pointer;
@@ -81,7 +78,13 @@ $red: #932619;
       white-space: nowrap;
 
       &:hover {
-        opacity: 0.8;
+        background-color: $cream;
+        color: $brown;
+        box-shadow: 0 8px 20px rgba(107, 64, 40, 0.25);
+      }
+
+      &:active {
+        transform: translateY(3px);
       }
     }
   }
@@ -184,7 +187,6 @@ $red: #932619;
       background-color: $gray-light;
       color: $gray;
       padding: 6px 10px;
-      border: 1px solid transparent;
       border-radius: 3px;
       font-size: 12px;
       font-family: inherit;
