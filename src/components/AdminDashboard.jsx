@@ -35,6 +35,31 @@ function AdminDashboard() {
     fetchAllOrders();
   }, []);
 
+  const exportToCSV = () => {
+    const headers = ["訂單編號,客戶姓名,電話,總金額,訂單狀態,下單日期\n"];
+    const csvContent = filteredOrders.map((order) => {
+      return `${order.orderId},${order.customer?.name},${
+        order.customer?.phone
+      },${order.total},${order.status},${new Date(
+        order.date
+      ).toLocaleDateString()}\n`;
+    });
+
+    const blob = new Blob(["\ufeff" + headers + csvContent.join("")], {
+      type: "text/csv;charset=utf-8;",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute(
+      "download",
+      `Maybeige_Orders_${new Date().toLocaleDateString()}.csv`
+    );
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const filteredOrders = orders.filter((order) => {
     const matchesSearch =
       order.orderId?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -129,6 +154,9 @@ function AdminDashboard() {
             <option value="已取消">已取消</option>
           </select>
         </div>
+        <button className="export-btn" onClick={exportToCSV}>
+          匯出訂單
+        </button>
       </div>
 
       <div className="order-table-wrapper">
