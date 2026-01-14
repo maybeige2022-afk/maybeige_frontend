@@ -73,8 +73,9 @@ $red: #932619;
       border: none;
       font-size: 14px;
       font-family: inherit;
+      box-shadow: 0 8px 20px rgba(107, 64, 40, 0.25);
+      transition: all 0.3s ease;
       cursor: pointer;
-      transition: opacity 0.3s;
       white-space: nowrap;
 
       &:hover {
@@ -187,6 +188,7 @@ $red: #932619;
       background-color: $gray-light;
       color: $gray;
       padding: 6px 10px;
+      border: none;
       border-radius: 3px;
       font-size: 12px;
       font-family: inherit;
