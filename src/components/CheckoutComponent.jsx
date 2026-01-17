@@ -11,7 +11,6 @@ function CheckoutComponent({ cartItems = [], setToast, clearCart }) {
   const currentEmail = localStorage.getItem("current_user_email") || "";
   const allUsers = JSON.parse(localStorage.getItem("all_users") || "{}");
   const currentUserData = allUsers[currentEmail] || {};
-
   const [paymentMethod, setPaymentMethod] = useState("信用卡支付");
   const [isAgreed, setIsAgreed] = useState(false);
   const [recipientName, setRecipientName] = useState(
@@ -24,12 +23,10 @@ function CheckoutComponent({ cartItems = [], setToast, clearCart }) {
   const [couponCode, setCouponCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const totalItemsCount = cartItems.reduce(
     (acc, item) => acc + item.quantity,
     0
   );
-
   const productTotal = cartItems.reduce((acc, item) => {
     const activePrice = item.salePrice || item.price;
     const numPrice =
@@ -38,7 +35,6 @@ function CheckoutComponent({ cartItems = [], setToast, clearCart }) {
         : activePrice;
     return acc + numPrice * item.quantity;
   }, 0);
-
   const shippingFee = productTotal >= 1500 ? 0 : 70;
   const finalTotal = Math.max(0, productTotal + shippingFee - discount);
 
@@ -70,6 +66,7 @@ function CheckoutComponent({ cartItems = [], setToast, clearCart }) {
       }
     } catch (err) {
       setDiscount(0);
+
       const errorMsg =
         err.response?.status === 401
           ? "請先登入後再領取折扣喔！"
@@ -156,10 +153,11 @@ function CheckoutComponent({ cartItems = [], setToast, clearCart }) {
       }
     } catch (err) {
       console.error("結帳失敗:", err);
+
       const errorMsg =
         err.response?.data?.message || "結帳失敗，請確認是否已登入。";
       setToast({ show: true, message: errorMsg });
-      setTimeout(() => setToast({ show: false, message: "" }), 3000);
+      setTimeout(() => setToast({ show: false, message: "" }), 2000);
     } finally {
       setIsSubmitting(false);
     }

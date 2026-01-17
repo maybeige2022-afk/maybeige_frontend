@@ -18,7 +18,6 @@ function CartComponent({
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => {
       const activePrice = item.salePrice || item.price;
-
       const priceValue =
         typeof activePrice === "string"
           ? parseInt(activePrice.replace(/[^\d]/g, ""), 10)
@@ -63,9 +62,7 @@ function CartComponent({
           <div className="cart-items-list">
             {cartItems.map((item) => {
               const currentId = item.cartId || item.id || item._id;
-
               const activePrice = item.salePrice || item.price;
-
               const itemPrice =
                 typeof activePrice === "string"
                   ? parseInt(activePrice.replace(/[^\d]/g, ""), 10)

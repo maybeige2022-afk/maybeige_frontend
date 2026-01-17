@@ -15,11 +15,8 @@ import rightImage from "../assets/images/首頁圖文.jpg";
 function HomeComponent({ products, addToCart }) {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
   const latestProducts = products.slice(0, 8);
-
   const topNames = ["暖霞落日", "咖啡午後", "莫內花園", "粉霧芭蕾", "柔光假日"];
-
   const bestSellers = React.useMemo(() => {
     return topNames
       .map((name) => products.find((p) => p.name === name))
@@ -35,6 +32,7 @@ function HomeComponent({ products, addToCart }) {
       },
       { threshold: 0.1 }
     );
+
     const items = document.querySelectorAll(".best-item-wrapper");
     items.forEach((el) => observer.observe(el));
     return () => observer.disconnect();

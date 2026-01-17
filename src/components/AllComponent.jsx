@@ -124,6 +124,7 @@ function AllComponent({ products, addToCart }) {
                   加入購物車
                 </button>
               </div>
+
               <div className="product-info">
                 <p className="name">{product.name}</p>
                 <p className="tags">{product.tags}</p>
@@ -139,7 +140,6 @@ function AllComponent({ products, addToCart }) {
                       : product.price}
                   </p>
                 )}
-
                 <button
                   className="cart-icon-btn"
                   onClick={() => handleOpenPopup(product)}

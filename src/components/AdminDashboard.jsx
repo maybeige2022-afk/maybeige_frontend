@@ -37,6 +37,7 @@ function AdminDashboard() {
     fetchAllOrders();
   }, []);
 
+  // export excel
   const exportToCSV = () => {
     const headers = ["訂單編號,客戶姓名,電話,總金額,訂單狀態,下單日期\n"];
     const csvContent = filteredOrders.map((order) => {
@@ -62,6 +63,7 @@ function AdminDashboard() {
     document.body.removeChild(link);
   };
 
+  // search
   const filteredOrders = orders.filter((order) => {
     const matchesSearch =
       order.orderId?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -74,6 +76,7 @@ function AdminDashboard() {
     return matchesSearch && matchesStatus;
   });
 
+  // update order status
   const handleStatusChange = async (orderId, newStatus) => {
     try {
       const token = localStorage.getItem("token");
