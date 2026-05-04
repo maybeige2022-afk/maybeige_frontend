@@ -7,7 +7,8 @@
 ## 相關連結
 
 - **線上預覽**: [https://maybeige-frontend.onrender.com/](https://maybeige-frontend.onrender.com/)
-- **後端原始碼**：[](https://github.com/maybeige2022-afk/maybeige_backend.git)](https://maybeige-frontend.onrender.com/)
+- **後端原始碼**:[https://github.com/maybeige2022-afk/maybeige_backend.git](https://github.com/maybeige2022-afk/maybeige_backend.git)]
+- **Figma設計**: [[https://maybeige-frontend.onrender.com/](https://www.figma.com/design/rwwPa7g2DqmLQ7zc4ZdnFx/MAYBEIGE-%E6%B0%B4%E6%99%B6%E6%89%8B%E9%8F%88%E7%B6%B2%E7%AB%99?node-id=0-1&t=FrmrtvOfsgRYTX0X-1)]
 - **後台管理系統**: `https://maybeige-frontend.onrender.com/admin-dashboard` (需具備管理員權限驗證)
 
 ## 部署與使用須知
