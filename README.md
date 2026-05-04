@@ -7,6 +7,7 @@
 ## 相關連結
 
 - **線上預覽**: [https://maybeige-frontend.onrender.com/](https://maybeige-frontend.onrender.com/)
+- **後端原始碼**：[](https://github.com/maybeige2022-afk/maybeige_backend.git)](https://maybeige-frontend.onrender.com/)
 - **後台管理系統**: `https://maybeige-frontend.onrender.com/admin-dashboard` (需具備管理員權限驗證)
 
 ## 部署與使用須知
